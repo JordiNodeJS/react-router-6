@@ -1,4 +1,11 @@
-import { Route, Routes, Link, useParams, Outlet } from 'react-router-dom'
+import {
+  Route,
+  Routes,
+  Link,
+  NavLink as NavLinkReactRouter,
+  useParams,
+  Outlet,
+} from 'react-router-dom'
 import './App.css'
 
 // componente: es una función que renderiza un elemento(un conjunto de etiquetas html)
@@ -27,7 +34,9 @@ const Tacos = () => {
     <>
       <h1>Tacos</h1>
       <h3>{nombre_taco}</h3>
-      <p><Link to='details'>Got to details</Link></p>
+      <p>
+        <Link to='details'>Got to details</Link>
+      </p>
       <Outlet />
     </>
   )
@@ -38,8 +47,18 @@ const TacoIndex = () => <h4>Index </h4>
 const TacoDetails = () => {
   const { nombre_taco } = useParams()
 
+  return <h2>Taco Details {nombre_taco}</h2>
+}
+
+const NavLink = ({to, children, ...props}) => {
   return (
-    <h2>Taco Details {nombre_taco}</h2>
+    <NavLinkReactRouter
+      {...props}
+      to={to}
+      className={({ isActive }) => (isActive ? 'is-active' : undefined)}
+    >
+      {children}
+    </NavLinkReactRouter>
   )
 }
 
@@ -52,21 +71,21 @@ function App() {
         <nav>
           <ul>
             <li>
-              <Link to='/'>Home</Link>
+              <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-              <Link to='/search-page'>Search</Link>
+              <NavLink to='/search-page'>Search</NavLink>
             </li>
           </ul>
         </nav>
       </header>
       <Routes>
-          // Routes: indica todas las rutas que tiene nuestra aplicacción
-          // Route: cuál es el path en que se tiene que renderizar un elemento
+        // Routes: indica todas las rutas que tiene nuestra aplicacción //
+        Route: cuál es el path en que se tiene que renderizar un elemento
         <Route path='/' element={<Home />} />
         <Route path='/search-page' element={<SearchPage />} />
-              // capturo el segmento de url con :nombre_taco
-        <Route path='/tacos/:nombre_taco' element={<Tacos />}> 
+        // capturo el segmento de url con :nombre_taco
+        <Route path='/tacos/:nombre_taco' element={<Tacos />}>
           <Route index element={<TacoIndex />} />
           <Route path='details' element={<TacoDetails />} />
         </Route>
