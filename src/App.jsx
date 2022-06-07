@@ -33,6 +33,8 @@ const Tacos = () => {
   )
 }
 
+const TacoIndex = () => <h4>Index </h4>
+
 const TacoDetails = () => {
   const { nombre_taco } = useParams()
 
@@ -65,9 +67,11 @@ function App() {
         <Route path='/search-page' element={<SearchPage />} />
               // capturo el segmento de url con :nombre_taco
         <Route path='/tacos/:nombre_taco' element={<Tacos />}> 
+          <Route index element={<TacoIndex />} />
           <Route path='details' element={<TacoDetails />} />
         </Route>
-
+        <Route path='/tacos/midu' element={<h3>Midu</h3>} />
+        <Route path='*' element={<h2>Not Found</h2>} />
       </Routes>
     </div>
   )
