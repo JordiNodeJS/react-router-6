@@ -59,10 +59,12 @@ function App() {
       </header>
       <Routes>
           // Routes: indica todas las rutas que tiene nuestra aplicacción
-        <Route path='/' element={<Home />} /> // Route: cuál es el path en que
-        se tiene que renderizar un elemento
+          // Route: cuál es el path en que se tiene que renderizar un elemento
+        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/search-page' element={<SearchPage />} />
-        <Route path='/tacos/:nombre_taco' element={<Tacos />}> // capturo el segmento de url con :nombre_taco
+              // capturo el segmento de url con :nombre_taco
+        <Route path='/tacos/:nombre_taco' element={<Tacos />}> 
           <Route path='details' element={<TacoDetails />} />
         </Route>
 
