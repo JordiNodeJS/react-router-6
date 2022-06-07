@@ -1,4 +1,4 @@
-import { Route, Routes, Link, useParams } from 'react-router-dom'
+import { Route, Routes, Link, useParams, Outlet } from 'react-router-dom'
 import './App.css'
 
 // componente: es una función que renderiza un elemento(un conjunto de etiquetas html)
@@ -28,6 +28,7 @@ const Tacos = () => {
       <h1>Tacos</h1>
       <h3>{nombre_taco}</h3>
       <p><Link to='details'>Got to details</Link></p>
+      <Outlet />
     </>
   )
 }
@@ -60,7 +61,6 @@ function App() {
       <Routes>
           // Routes: indica todas las rutas que tiene nuestra aplicacción
           // Route: cuál es el path en que se tiene que renderizar un elemento
-        <Route path='/' element={<Home />} />
         <Route path='/' element={<Home />} />
         <Route path='/search-page' element={<SearchPage />} />
               // capturo el segmento de url con :nombre_taco
