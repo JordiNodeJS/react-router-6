@@ -2,12 +2,11 @@ import {
   Route,
   Routes,
   Link,
-  NavLink as NavLinkReactRouter,
   useParams,
   Outlet,
 } from 'react-router-dom'
 import './App.css'
-
+import NavLink from './component/NavLink'
 // componente: es una función que renderiza un elemento(un conjunto de etiquetas html)
 const Home = () => <h1>Home</h1>
 
@@ -50,17 +49,7 @@ const TacoDetails = () => {
   return <h2>Taco Details {nombre_taco}</h2>
 }
 
-const NavLink = ({to, children, ...props}) => {
-  return (
-    <NavLinkReactRouter
-      {...props}
-      to={to}
-      className={({ isActive }) => (isActive ? 'is-active' : undefined)}
-    >
-      {children}
-    </NavLinkReactRouter>
-  )
-}
+
 
 function App() {
   return (
